@@ -1,9 +1,12 @@
 {
     "folders": [
-        {
-            "path": "."
-        }
-    ],
+			{
+				"path": "."
+			},
+			{
+				"path": "../../wordpress-develop"
+			}
+		],
     "settings": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "[php]": {
