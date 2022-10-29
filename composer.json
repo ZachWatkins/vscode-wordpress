@@ -1,0 +1,78 @@
+{
+	"name": "zachwatkins/vscode-wordpress",
+	"license": "GPL-2.0-or-later",
+	"description": "Template Visual Studio Code workspace for WordPress.",
+	"homepage": "https://github.com/zachwatkins/vscode-wordpress/",
+	"keywords": [
+		"vscode",
+		"workspace",
+		"wordpress",
+		"wp"
+	],
+	"support": {
+		"issues": "https://github.com/zachwatkins/vscode-wordpress/issues",
+		"source": "https://github.com/zachwatkins/vscode-wordpress/",
+		"docs": "https://raw.githubusercontent.com/zachwatkins/vscode-wordpress/main/README.md"
+	},
+	"authors": [
+		{
+			"name": "Zachary K. Watkins",
+			"email": "zach@zachwatkins.dev",
+			"homepage": "https://github.com/zachwatkins/",
+			"role": "Creator"
+		},
+		{
+			"name": "Contributors",
+			"homepage": "https://github.com/zachwatkins/vscode-wordpress/graphs/contributors"
+		}
+	],
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+		"squizlabs/php_codesniffer": "3.6.0",
+		"wp-coding-standards/wpcs": "~2.3.0",
+		"phpcompatibility/phpcompatibility-wp": "~2.1.3",
+		"phpunit/phpunit": "^9.5",
+		"yoast/phpunit-polyfills": "^1.0.1",
+		"automattic/vipwpcs": ">=2.3.3"
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"preferred-install": "dist",
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"autoload": {
+		"classmap": [
+			"src/"
+		]
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"@config-wpcs"
+		],
+		"config-wpcs": [
+			"./vendor/bin/phpcs --config-set default_standard WordPress-VIP-Go",
+			"./vendor/bin/phpcs --config-set report_format summary,source",
+			"./vendor/bin/phpcs --config-set colors 1"
+		],
+		"install-codestandards": [
+			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+		],
+		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcompat.xml.dist",
+		"format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+		"format:modified": "@format --filter=gitmodified",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+		"lint:errors": "@lint -n",
+		"lint:modified": "@lint --filter=gitmodified",
+		"test": [
+			"Composer\\Config::disableProcessTimeout",
+			"@php ./vendor/phpunit/phpunit/phpunit"
+		]
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"name": "@zachwatkins/vscode-wordpress",
+	"version": "0.1.0",
+	"description": "Template Visual Studio Code workspace for WordPress.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zachwatkins/vscode-wordpress"
+	},
+	"engines": {
+		"node": ">=16.10.0",
+		"npm": ">=8.14.0"
+	},
+	"author": "Zachary K. Watkins",
+	"license": "GPL-2.0-or-later",
+	"browserslist": [
+		"> 1%",
+		"last 1 Android versions",
+		"last 1 ChromeAndroid versions",
+		"last 2 Chrome versions",
+		"last 2 Firefox versions",
+		"last 2 Safari versions",
+		"last 2 iOS versions",
+		"last 2 Edge versions",
+		"last 2 Opera versions"
+	],
+	"devDependencies": {
+		"ink-docstrap": "1.3.2"
+	}
+}
