@@ -64,12 +64,14 @@
 		"install-codestandards": [
 			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
 		],
-		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcompat.xml.dist",
-		"format": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
-		"format:modified": "@format --filter=gitmodified",
-		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
-		"lint:errors": "@lint -n",
-		"lint:modified": "@lint --filter=gitmodified",
+		"phpcs": "@php ./vendor/bin/phpcs",
+		"phpcbf": "@php ./vendor/bin/phpcbf",
+		"format": "@phpcbf --filter=gitmodified",
+		"format:all": "@phpcbf",
+		"lint": "@phpcs --filter=gitmodified",
+		"lint:errors": "@phpcs -n --filter=gitmodified",
+		"lint:all": "@phpcs -n",
+		"lint:all-errors": "@phpcs -n",
 		"test": [
 			"Composer\\Config::disableProcessTimeout",
 			"@php ./vendor/phpunit/phpunit/phpunit"
